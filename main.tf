@@ -20,8 +20,8 @@ provider "azurerm" {
 
 
 resource "azurerm_resource_group" "avx-management" {
-  name     = "atulrg-oob"
-  location = "West Europe"
+  name     = "atulrg-testctl"
+  location = "UK South"
 
   tags = {
     environment = "prd"
@@ -265,7 +265,7 @@ resource "azurerm_virtual_machine" "avx-controller" {
   location              = azurerm_resource_group.avx-management.location
   resource_group_name   = azurerm_resource_group.avx-management.name
   network_interface_ids = [azurerm_network_interface.avx-ctrl-iface.id]
-  vm_size               = "Standard_D2s_v3"
+  vm_size               = "Standard_B1ms"
 
   delete_data_disks_on_termination = true
 
@@ -333,7 +333,7 @@ resource "azurerm_virtual_machine" "avx-copilot" {
   location              = azurerm_resource_group.avx-management.location
   resource_group_name   = azurerm_resource_group.avx-management.name
   network_interface_ids = [azurerm_network_interface.avx-copilot-iface.id]
-  vm_size               = "Standard_D4_v3"
+  vm_size               = "Standard_B1ms"
 
   delete_data_disks_on_termination = true
 
